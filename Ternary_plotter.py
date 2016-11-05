@@ -18,8 +18,7 @@ figure, tax = ternary.figure(scale=scale)
 tax.set_title("Scatter Plot", fontsize=20)
 tax.boundary(linewidth=2.0)
 tax.gridlines(multiple=10, color="blue")
-<<<<<<< HEAD
-=======
+
 points = []
 # Load some data, tuples (x,y,z)
 with open("all_ternary_data.csv") as csvfile:
@@ -30,7 +29,6 @@ with open("all_ternary_data.csv") as csvfile:
         list1.append(row)
 
     list2 = list1.pop(0)
->>>>>>> refs/remotes/origin/Read-CSV-data
 
     list1 = [map(float, x) for x in list1]
     tup_percent = zip (*list1)
