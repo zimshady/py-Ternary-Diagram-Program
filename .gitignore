@@ -2,6 +2,13 @@
 Thumbs.db
 ehthumbs.db
 
+#MS Office files
+*.csv
+*.xls
+*.xlsx
+*.doc
+*.docx
+
 # Folder config file
 Desktop.ini
 
