@@ -1,4 +1,5 @@
 import ternary
+import os
 from matplotlib import *
 import matplotlib.cm as cmx
 import csv
@@ -11,7 +12,8 @@ def get_cmap(N):
     def map_index_to_rgb_color(index):
         return scalar_map.to_rgba(index)
     return map_index_to_rgb_color
-
+### Get current directory
+path = os.getcwd()
 ### Scatter Plot
 scale = 100
 figure, tax = ternary.figure(scale=scale)
@@ -21,7 +23,7 @@ tax.gridlines(multiple=10, color="blue")
 
 points = []
 # Load some data, tuples (x,y,z)
-with open("all_ternary_data.csv") as csvfile:
+with open(path + "\\" + "all_ternary_data.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list1 = []
 
@@ -29,7 +31,6 @@ with open("all_ternary_data.csv") as csvfile:
         list1.append(row)
 
     list2 = list1.pop(0)
-
     list1 = [map(float, x) for x in list1]
     tup_percent = zip (*list1)
 
@@ -39,10 +40,10 @@ cmap=get_cmap(len(list2)+1)
 #has to be a tuple in a list (lithics,quartz,feldspar)
 for i in tup_percent:
     print "i=" + str(i)
-    tax.scatter([i], marker='s', color=cmap(count), label=list2[count])
+    tax.scatter([i], marker='p', color="black", label=list2[count])
     count+=1
 
-tax.legend()
+#tax.legend()
 tax.ticks(axis='lbr', linewidth=1, multiple=10)
 
 tax.show()
