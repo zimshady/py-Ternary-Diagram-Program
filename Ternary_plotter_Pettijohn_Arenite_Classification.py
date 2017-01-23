@@ -1,8 +1,11 @@
 import ternary
 import os
+import matplotlib as mpl
 from matplotlib import *
 import matplotlib.cm as cmx
 import csv
+
+mpl.rcParams['pdf.fonttype'] = 42 # ensures editable text in illustrator
 
 def get_cmap(N):
     '''Returns a function that maps each index in 0, 1, ... N-1 to a distinct
