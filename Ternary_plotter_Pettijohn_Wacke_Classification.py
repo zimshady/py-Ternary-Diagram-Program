@@ -31,7 +31,7 @@ tax.gridlines(multiple=5, color="black")
 
 points = []
 # Load some data, tuples (x,y,z)
-with open(path + "\\" + "L-Q-F_arenites.csv") as csvfile:
+with open(path + "\\" + "L-Q-F_wackes.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list1 = []
 
@@ -43,7 +43,7 @@ with open(path + "\\" + "L-Q-F_arenites.csv") as csvfile:
     tup_percent = zip (*list1)
     csvfile.close()
 
-with open(path + "\\" + "Dingle_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "Dingle_wacke_point_L-Q-F.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list3 = []
 
@@ -55,7 +55,7 @@ with open(path + "\\" + "Dingle_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent2 = zip (*list3)
     csvfile.close()
 
-with open(path + "\\" + "WMunster_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "WMunster_wacke_point_L-Q-F.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list5 = []
 
@@ -67,7 +67,7 @@ with open(path + "\\" + "WMunster_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent3 = zip (*list5)
     csvfile.close()
 
-with open(path + "\\" + "EMunster_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "EMunster_wacke_point_L-Q-F.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list7 = []
 
@@ -114,11 +114,11 @@ for i in tup_percent:
     tax.scatter([i], marker='p', color='red', label=list2[count])
     count+=1
 
+#draw lines for Pettijohn wacke classification:
 tax.line(qtzAren1,qtzAren2,linewidth=1.0,color='black')
 tax.line(qtzAren3,qtzAren2,linewidth=1.0,color='black')
-tax.line(subArk,middle,linewidth=1.0,color='black')
-tax.line(subLith,middle,linewidth=1.0,color='black')
 tax.line(noQtz,qtzAren2,linewidth=1.0,color='black')
+
 #tax.legend()
 tax.ticks(axis='lbr', linewidth=1, multiple=10)
 
