@@ -4,6 +4,11 @@ import matplotlib as mpl
 from matplotlib import *
 import matplotlib.cm as cmx
 import csv
+from Convex_hull import make_conv_hull as make_hull
+import numpy as np
+import scipy.spatial
+import matplotlib.pyplot as plt
+
 
 mpl.rcParams['pdf.fonttype'] = 42 # ensures editable text in illustrator
 
@@ -22,7 +27,7 @@ scale = 100
 figure, tax = ternary.figure(scale=scale)
 tax.set_title("Scatter Plot", fontsize=20)
 tax.boundary(linewidth=2.0)
-tax.gridlines(multiple=10, color="blue")
+tax.gridlines(multiple=5, color="black")
 
 points = []
 # Load some data, tuples (x,y,z)
@@ -50,7 +55,7 @@ with open(path + "\\" + "all_Dingle_point_data.csv") as csvfile:
     tup_percent2 = zip (*list3)
     csvfile.close()
 
-with open(path + "\\" + "all_WMunster_point_data.csv") as csvfile:
+with open(path + "\\" + "All_WMunster_point_data_L-Q-F.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list5 = []
 
@@ -62,9 +67,23 @@ with open(path + "\\" + "all_WMunster_point_data.csv") as csvfile:
     tup_percent3 = zip (*list5)
     csvfile.close()
 
+with open(path + "\\" + "All_EMunster_point_data_L-Q-F.csv") as csvfile:
+    reader = csv.reader(csvfile, delimiter = ',')
+    list7 = []
+
+    for row in reader:
+        list7.append(row)
+
+    list8 = list7.pop(0)
+    list7 = [map(float, x) for x in list7]
+    tup_percent4 = zip (*list7)
+    csvfile.close()
+
 count=0
 count1=0
 count2=0
+count3=0
+
 
 cmap=get_cmap(len(list2)+1)
 #Boundary lines for Pettijohn 1987 arenite classification:
@@ -73,10 +92,7 @@ subArk, middle, subLith = (0,75,25),(25,50,25),(25,75,0)
 noQtz = (50,0,50)
 # Plot a few different styles with a legend
 #has to be a tuple in a list (lithics,quartz,feldspar)
-for i in tup_percent:
-    print "i=" + str(i)
-    tax.scatter([i], marker='p', color='red', label=list2[count])
-    count+=1
+
 
 for i in tup_percent2:
     print "j=" + str(i)
@@ -85,8 +101,18 @@ for i in tup_percent2:
 
 for i in tup_percent3:
     print "j=" + str(i)
-    tax.scatter([i], marker='*', color='black', label=list6[count2])
+    tax.scatter([i], marker='o', color='blue', label=list6[count2])
     count2+=1
+
+for i in tup_percent4:
+    print "j=" + str(i)
+    tax.scatter([i], marker='s', color='green', label=list8[count3])
+    count3+=1
+
+for i in tup_percent:
+    print "i=" + str(i)
+    tax.scatter([i], marker='p', color='red', label=list2[count])
+    count+=1
 
 tax.line(qtzAren1,qtzAren2,linewidth=1.0,color='black')
 tax.line(qtzAren3,qtzAren2,linewidth=1.0,color='black')
