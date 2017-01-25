@@ -3,15 +3,15 @@ import matplotlib as mpl
 from matplotlib import *
 import numpy as np
 
+
 mpl.rcParams['pdf.fonttype'] = 42 # ensures editable text in illustrator
 
 ### Get current directory
 path = os.getcwd()
-
 ### Scatter Plot
 scale = 100
 figure, tax = ternary.figure(scale=scale)
-tax.set_title("Arenite Classification", fontsize=20)
+tax.set_title("Tectonic setting", fontsize=20)
 tax.boundary(linewidth=2.0)
 tax.gridlines(multiple=5, color="black")
 
@@ -64,28 +64,24 @@ with open(path + "\\" + "EMunster_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent4 = zip (*list7)
     csvfile.close()
 
-#Boundary lines for Pettijohn 1987 arenite classification:
-qtzAren1, qtzAren2, qtzAren3 = (0,95,5),(5,90,5),(5,95,0)
-subArk, middle, subLith = (0,75,25),(25,50,25),(25,75,0)
-noQtz = (50,0,50)
+#Boundary lines for Pettijohn 1987 tectonic setting classification with total qtz:
+leftmost1, leftmost2 = (3,97,0),(15,0,85)
+midline1, midline2 = (0,55,45),(75,25,0)
+upperdotted1, upperdotted2 = (63,37,0),(0,13,87)
+lowerdotted1, lowerdotted2 = (75,25,0),(50,0,50)
 
-# Plot a few different styles with a legend
 #has to be a tuple in a list (lithics,quartz,feldspar)
-tax.scatter(tup_percent, marker='p', color='red')
-tax.scatter(tup_percent2, marker='*', color='black')
-tax.scatter(tup_percent3, marker='o', color='blue')
-tax.scatter(tup_percent4, marker='s', color='green')
+tax.scatter(tup_percent,marker='p',color='red')
+tax.scatter(tup_percent2,marker='*',color='black')
+tax.scatter(tup_percent3,marker='o',color='blue')
+tax.scatter(tup_percent4,marker='s',color='green')
 
-
-tax.line(qtzAren1,qtzAren2,linewidth=1.0,color='black')
-tax.line(qtzAren3,qtzAren2,linewidth=1.0,color='black')
-tax.line(subArk,middle,linewidth=1.0,color='black')
-tax.line(subLith,middle,linewidth=1.0,color='black')
-tax.line(noQtz,qtzAren2,linewidth=1.0,color='black')
-#tax.legend()
-#tax.ticks(axis='lbr', linewidth=1, multiple=10)
+tax.line(leftmost1,leftmost2,linewidth=1.0,color='black')
+tax.line(midline1,midline2,linewidth=1.0,color='black')
+tax.line(upperdotted1,upperdotted2,linewidth=1.0,color='black', linestyle='--')
+tax.line(lowerdotted1,lowerdotted2,linewidth=1.0,color='black',linestyle='--')
 
 ax = tax.get_axes()
 ax.axis('Off')
-ax.figure.savefig("arenite_classification.pdf")
+ax.figure.savefig("tectonic_setting_total_qtz.pdf")
 tax.show()

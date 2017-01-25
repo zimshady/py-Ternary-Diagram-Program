@@ -14,4 +14,16 @@
 	<natures>
 		<nature>org.python.pydev.pythonNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Ternary_plotter_Pettijohn_Arenite_Classification.py</name>
+			<type>1</type>
+			<location>C:/GitHub Folders/py-Ternary-Diagram-Program/Ternary_plotter_Pettijohn_Arenite_Classification.py</location>
+		</link>
+		<link>
+			<name>Ternary_plotter_Pettijohn_Wacke_Classification.py</name>
+			<type>1</type>
+			<location>C:/GitHub Folders/py-Ternary-Diagram-Program/Ternary_plotter_Pettijohn_Wacke_Classification.py</location>
+		</link>
+	</linkedResources>
 </projectDescription>
