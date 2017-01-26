@@ -69,20 +69,18 @@ qtzAren1, qtzAren2, qtzAren3 = (0,95,5),(5,90,5),(5,95,0)
 subArk, middle, subLith = (0,75,25),(25,50,25),(25,75,0)
 noQtz = (50,0,50)
 
-# Plot a few different styles with a legend
-#has to be a tuple in a list (lithics,quartz,feldspar)
-tax.scatter(tup_percent, marker='p', color='red')
-tax.scatter(tup_percent2, marker='*', color='black')
-tax.scatter(tup_percent3, marker='o', color='blue')
-tax.scatter(tup_percent4, marker='s', color='green')
-
-
 tax.line(qtzAren1,qtzAren2,linewidth=1.0,color='black')
 tax.line(qtzAren3,qtzAren2,linewidth=1.0,color='black')
 tax.line(subArk,middle,linewidth=1.0,color='black')
 tax.line(subLith,middle,linewidth=1.0,color='black')
 tax.line(noQtz,qtzAren2,linewidth=1.0,color='black')
-#tax.legend()
+
+#plot data - has to be a tuple in a list (lithics,quartz,feldspar)
+tax.scatter(tup_percent2, marker='*', color='black')
+tax.scatter(tup_percent3, marker='o', color='blue')
+tax.scatter(tup_percent4, marker='s', color='green')
+tax.scatter(tup_percent, marker='p', color='red')
+
 #tax.ticks(axis='lbr', linewidth=1, multiple=10)
 
 ax = tax.get_axes()

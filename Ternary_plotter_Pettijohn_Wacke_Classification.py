@@ -3,7 +3,6 @@ import matplotlib as mpl
 from matplotlib import *
 import numpy as np
 
-
 mpl.rcParams['pdf.fonttype'] = 42 # ensures editable text in illustrator
 
 ### Get current directory
@@ -11,7 +10,7 @@ path = os.getcwd()
 ### Scatter Plot
 scale = 100
 figure, tax = ternary.figure(scale=scale)
-tax.set_title("Scatter Plot", fontsize=20)
+tax.set_title("Wacke Classification", fontsize=20)
 tax.boundary(linewidth=2.0)
 tax.gridlines(multiple=5, color="black")
 
@@ -69,16 +68,15 @@ qtzAren1, qtzAren2, qtzAren3 = (0,95,5),(5,90,5),(5,95,0)
 subArk, middle, subLith = (0,75,25),(25,50,25),(25,75,0)
 noQtz = (50,0,50)
 
-#has to be a tuple in a list (lithics,quartz,feldspar)
-tax.scatter(tup_percent,marker='p',color='red')
-tax.scatter(tup_percent2,marker='*',color='black')
-tax.scatter(tup_percent3,marker='o',color='blue')
-tax.scatter(tup_percent4,marker='s',color='green')
-
-#draw lines for Pettijohn wacke classification:
 tax.line(qtzAren1,qtzAren2,linewidth=1.0,color='black')
 tax.line(qtzAren3,qtzAren2,linewidth=1.0,color='black')
 tax.line(noQtz,qtzAren2,linewidth=1.0,color='black')
+
+#has to be a tuple in a list (lithics,quartz,feldspar)
+tax.scatter(tup_percent2,marker='*',color='black',s=20)
+tax.scatter(tup_percent3,marker='o',color='blue',s=20)
+tax.scatter(tup_percent4,marker='s',color='green',s=20)
+tax.scatter(tup_percent,marker='p',color='red',s=20)
 
 ax = tax.get_axes() #get matplotlib axes in order to output pdf
 ax.axis('Off') #remove matplotlib axes

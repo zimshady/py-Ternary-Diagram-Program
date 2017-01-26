@@ -16,7 +16,7 @@ tax.boundary(linewidth=2.0)
 tax.gridlines(multiple=5, color="black")
 
 # Load some data, tuples (x,y,z)
-with open(path + "\\" + "L-Q-F_arenites.csv") as csvfile:
+with open(path + "\\" + "Brenton_points_all_Lt-Qm-Ft.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list1 = []
 
@@ -28,7 +28,7 @@ with open(path + "\\" + "L-Q-F_arenites.csv") as csvfile:
     tup_percent = zip (*list1)
     csvfile.close()
 
-with open(path + "\\" + "Dingle_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "Dingle_all_Lt-Qm-Ft.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list3 = []
 
@@ -40,7 +40,7 @@ with open(path + "\\" + "Dingle_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent2 = zip (*list3)
     csvfile.close()
 
-with open(path + "\\" + "WMunster_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "WMunster_all_Lt-Qm-Ft.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list5 = []
 
@@ -52,7 +52,7 @@ with open(path + "\\" + "WMunster_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent3 = zip (*list5)
     csvfile.close()
 
-with open(path + "\\" + "EMunster_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "EMunster_all_Lt-Qm-Ft.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list7 = []
 
@@ -71,19 +71,17 @@ rightmost1, rightmost2 = (0,80,20),(87,0,13)
 upperdotted1, upperdotted2 = (68,32,0),(0,18,82)
 lowerdotted1, lowerdotted2 = (82,18,0),(55,0,45)
 
-# Plot a few different styles with a legend
-#has to be a tuple in a list (lithics,quartz,feldspar)
-tax.scatter(tup_percent,marker='p',color='red')
-tax.scatter(tup_percent2,marker='*',color='black')
-tax.scatter(tup_percent3,marker='o',color='blue')
-tax.scatter(tup_percent4,marker='s',color='green')
-
 tax.line(leftmost1,leftmost2,linewidth=1.0,color='black')
 tax.line(midline1,midline2,linewidth=1.0,color='black')
 tax.line(rightmost1,rightmost2,linewidth=1.0,color='black')
 tax.line(upperdotted1,upperdotted2,linewidth=1.0,color='black', linestyle='--')
 tax.line(lowerdotted1,lowerdotted2,linewidth=1.0,color='black',linestyle='--')
 
+#plot data - has to be a tuple in a list (lithics,quartz,feldspar)
+tax.scatter(tup_percent2,marker='*',color='black')
+tax.scatter(tup_percent3,marker='o',color='blue')
+tax.scatter(tup_percent4,marker='s',color='green')
+tax.scatter(tup_percent,marker='p',color='red')
 
 ax = tax.get_axes()
 ax.axis('Off')
