@@ -7,16 +7,15 @@ mpl.rcParams['pdf.fonttype'] = 42 # ensures editable text in illustrator
 
 ### Get current directory
 path = os.getcwd()
-
 ### Scatter Plot
 scale = 100
 figure, tax = ternary.figure(scale=scale)
-tax.set_title("Arenite Classification", fontsize=20)
+tax.set_title("Wacke Classification", fontsize=20)
 tax.boundary(linewidth=1.0,solid_capstyle='round')
 tax.gridlines(multiple=5, color="black")
 
 # Load some data, tuples (x,y,z)
-with open(path + "\\" + "L-Q-F_arenites.csv") as csvfile:
+with open(path + "\\" + "L-Q-F_wackes.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list1 = []
 
@@ -28,7 +27,7 @@ with open(path + "\\" + "L-Q-F_arenites.csv") as csvfile:
     tup_percent = zip (*list1)
     csvfile.close()
 
-with open(path + "\\" + "Dingle_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "Dingle_wacke_point_L-Q-F.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list3 = []
 
@@ -40,7 +39,7 @@ with open(path + "\\" + "Dingle_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent2 = zip (*list3)
     csvfile.close()
 
-with open(path + "\\" + "WMunster_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "WMunster_wacke_point_L-Q-F.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list5 = []
 
@@ -52,7 +51,7 @@ with open(path + "\\" + "WMunster_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent3 = zip (*list5)
     csvfile.close()
 
-with open(path + "\\" + "EMunster_arenite_point_L-Q-F.csv") as csvfile:
+with open(path + "\\" + "EMunster_wacke_point_L-Q-F.csv") as csvfile:
     reader = csv.reader(csvfile, delimiter = ',')
     list7 = []
 
@@ -64,26 +63,22 @@ with open(path + "\\" + "EMunster_arenite_point_L-Q-F.csv") as csvfile:
     tup_percent4 = zip (*list7)
     csvfile.close()
 
-#Boundary lines for Pettijohn 1987 arenite classification:
+#Boundary lines for Pettijohn 1987 wacke classification:
 qtzAren1, qtzAren2, qtzAren3 = (0,95,5),(5,90,5),(5,95,0)
 subArk, middle, subLith = (0,75,25),(25,50,25),(25,75,0)
 noQtz = (50,0,50)
 
 tax.line(qtzAren1,qtzAren2,linewidth=1.0,color='black',solid_capstyle='round')
 tax.line(qtzAren3,qtzAren2,linewidth=1.0,color='black',solid_capstyle='round')
-tax.line(subArk,middle,linewidth=1.0,color='black',solid_capstyle='round')
-tax.line(subLith,middle,linewidth=1.0,color='black',solid_capstyle='round')
 tax.line(noQtz,qtzAren2,linewidth=1.0,color='black',solid_capstyle='round')
 
-#plot data - has to be a tuple in a list (lithics,quartz,feldspar)
-tax.scatter(tup_percent2, marker='*', color='black')
-tax.scatter(tup_percent3, marker='o', color='blue')
-tax.scatter(tup_percent4, marker='s', color='green')
-tax.scatter(tup_percent, marker='p', color='red')
+#has to be a tuple in a list (lithics,quartz,feldspar)
+tax.scatter(tup_percent2,marker='*',color='black',s=3)#plot Dingle Basin
+tax.scatter(tup_percent3,marker='o',color='blue',s=3)#plot western Munster Basin
+tax.scatter(tup_percent4,marker='s',color='green',s=3)#plot eastern Munster Basin
+tax.scatter(tup_percent,marker='p',color='red',s=3)#plot this study
 
-#tax.ticks(axis='lbr', linewidth=1, multiple=10)
-
-ax = tax.get_axes()
-ax.axis('Off')
-ax.figure.savefig("arenite_classification.pdf")
+ax = tax.get_axes() #get matplotlib axes in order to output pdf
+ax.axis('Off') #remove matplotlib axes
+ax.figure.savefig("wacke_classification_tiny_points.pdf") #output pdf
 tax.show()

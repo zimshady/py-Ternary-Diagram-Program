@@ -12,7 +12,7 @@ path = os.getcwd()
 scale = 100
 figure, tax = ternary.figure(scale=scale)
 tax.set_title("Tectonic setting", fontsize=20)
-tax.boundary(linewidth=2.0)
+tax.boundary(linewidth=1.0,solid_capstyle='round')
 tax.gridlines(multiple=5, color="black")
 
 # Load some data, tuples (x,y,z)
@@ -70,10 +70,10 @@ midline1, midline2 = (0,55,45),(75,25,0)
 upperdotted1, upperdotted2 = (63,37,0),(0,13,87)
 lowerdotted1, lowerdotted2 = (75,25,0),(50,0,50)
 
-tax.line(leftmost1,leftmost2,linewidth=1.0,color='black')
-tax.line(midline1,midline2,linewidth=1.0,color='black')
-tax.line(upperdotted1,upperdotted2,linewidth=1.0,color='black', linestyle='--')
-tax.line(lowerdotted1,lowerdotted2,linewidth=1.0,color='black',linestyle='--')
+tax.line(leftmost1,leftmost2,linewidth=1.0,color='black',solid_capstyle='round')
+tax.line(midline1,midline2,linewidth=1.0,color='black',solid_capstyle='round')
+tax.line(upperdotted1,upperdotted2,linewidth=1.0,color='black', linestyle='--',solid_capstyle='round')
+tax.line(lowerdotted1,lowerdotted2,linewidth=1.0,color='black',linestyle='--',solid_capstyle='round')
 
 #plot data - has to be a tuple in a list (lithics,quartz,feldspar)
 tax.scatter(tup_percent2,marker='*',color='black')
